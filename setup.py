@@ -8,5 +8,6 @@ setup(name='regionclasser',
             license="MIT",
             packages=['regionclasser'],
             install_requires=['fiona', 'shapely'],
+            package_data={'regionclasser': ['shapefiles/*']}
             zip_safe=False
             )
