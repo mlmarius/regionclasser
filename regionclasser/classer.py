@@ -1,9 +1,6 @@
-import matplotlib.pyplot as plt
 import fiona
-from matplotlib.collections import PatchCollection
 from shapely.geometry import Point, MultiPolygon, shape
 from shapely.ops import cascaded_union
-from descartes import PolygonPatch
 import os
 
 
@@ -83,6 +80,9 @@ class RegionClasser(object):
         return region_classes
 
     def plotRegions(self):
+        import matplotlib.pyplot as plt
+        from matplotlib.collections import PatchCollection
+        from descartes import PolygonPatch
         '''
         visually check regions
         '''
@@ -109,15 +109,16 @@ class RegionClasser(object):
 class RomaniaUATClasser(object):
     pass
 
-__rc = None
+__rc = None  # Own instance of RegionClasser used by standalone functions
+__me = os.path.abspath(os.path.dirname(__file__))
 
 
 def getRegionClasses(lat, lon):
-    global __rc
+    global __rc, __me
     try:
         return __rc.getClasses(lat, lon)
     except AttributeError:
-        __rc = RegionClasser('shapefiles/')
+        __rc = RegionClasser(os.path.join(__me, 'shapefiles/'))
         return __rc.getClasses(lat, lon)
 
 if __name__ == '__main__':
@@ -127,7 +128,7 @@ if __name__ == '__main__':
 
     assert getRegionClasses(45.8, 25.2) == ['romania']
 
-    rc = RegionClasser('shapefiles/')
+    rc = RegionClasser(os.path.join(__me, 'shapefiles/'))
     rc.loadCache()
     rc.plotRegions()
 
