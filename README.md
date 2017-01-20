@@ -18,3 +18,6 @@ rc.plotRegions()            # plot regions to screen for visual inspection
 rc.getClasses(lat, lon)     # get regions containing this point
 ```
 
+## Tests
+Self tests inside the classer.py file
+
