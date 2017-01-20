@@ -2,6 +2,11 @@
 
 Classes used to classify the regions in and around Romania into usefull tags.
 
+## Installation
+```
+pip2.7 install git+git://github.com/mlmarius/regionclasser.git
+```
+
 ## Usage
 
 ### Get classes for a particular point:
