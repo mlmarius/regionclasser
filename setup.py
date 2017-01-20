@@ -10,5 +10,5 @@ setup(name='regionclasser',
       packages=['regionclasser'],
       install_requires=['fiona', 'shapely'],
       package_data={'regionclasser': ['shapefiles/*']},
-      zip_safe=False
+      include_package_data=True
 )
