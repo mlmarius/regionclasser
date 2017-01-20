@@ -7,5 +7,6 @@ setup(name='regionclasser',
             url="https://github.com/mlmarius/regionclasser",
             license="MIT",
             packages=['regionclasser'],
+            install_requires=['fiona'],
             zip_safe=False
             )
